@@ -35,7 +35,7 @@ Product.create!(title: 'Programming Ruby 1.9 & 2.0',
         out there. If you need to get working programs delivered fast,
         you should add Ruby to your toolbox.
       </p>},
-  image_url: 'ruby.jpg',
+  image_url: 'ruby.png',
   price: 49.95)
 # . . .
 
@@ -49,5 +49,5 @@ Product.create!(title: 'Rails Test Prescriptions',
         procedures for Rails 2 and Rails 3, and introduces popular add-ons,
         including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
       </p>},
-  image_url: 'rtp.jpg',
+  image_url: 'rtp.png',
   price: 34.95)
