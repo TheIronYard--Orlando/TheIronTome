@@ -46,4 +46,14 @@ class ProductTest < ActiveSupport::TestCase
       assert new_product(name).invalid?, "#{name} shouldn't be valid"
     end
   end
+
+  test "product is not valid without a unique title" do
+    product = Product.new(title: products(:morpho).title,
+                          description: "Banana between two ferns.",
+                          price: 1,
+                          image_url: "fred.gif")
+
+    assert product.invalid?
+    assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
+  end
 end
