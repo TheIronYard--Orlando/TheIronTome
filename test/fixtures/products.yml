@@ -1,13 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  title: MyString
-  description: MyText
-  image_url: MyString
-  price: 9.99
-
-two:
-  title: MyString
-  description: MyText
-  image_url: MyString
-  price: 9.99
+morpho:
+  title: Template Morphology
+  description: This setting should be used inside templates, but those are more than moderate morphological changes
+  price: 6.66
+  image_url: beast.png
