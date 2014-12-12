@@ -56,4 +56,19 @@ class ProductTest < ActiveSupport::TestCase
     assert product.invalid?
     assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
   end
+
+  test "product title must be at least 10 characters" do
+    product = products(:morpho)
+    ok = ["What is a man", "Going for the long haul", "The Donkey ate a Neutron Start", "Don't Trust Robust Monkeys"]
+    ok.each do |title|
+      product.title = title
+      assert product.valid?, "#{title} should be valid"
+    end
+
+    bad = ["Forlorn", "Longing", "Deep", "Wide", "Ronery"]
+    bad.each do |title|
+      product.title = title
+      assert product.invalid?, "#{title} shouldn't be valid"
+    end
+  end
 end
