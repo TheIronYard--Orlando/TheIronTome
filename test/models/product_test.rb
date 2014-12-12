@@ -31,6 +31,7 @@ class ProductTest < ActiveSupport::TestCase
   def new_product(image_url)
     Product.new(title: "Tales of Nyarlathotep",
                 description: "Adorable shenanigans of an ancient one.",
+                price: 1,
                 image_url: image_url)
   end
 
