@@ -1,5 +1,22 @@
-morpho:
-  title: Template Morphology
-  description: This setting should be used inside templates, but those are more than moderate morphological changes
-  price: 6.66
-  image_url: beast.png
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+one:
+  title: The One Book to Rule
+  description: MyText
+  price: 9.99
+  image_url: one_book.png
+
+two:
+  title: Book of Seconds
+  description: MyText
+  price: 9.99
+  image_url: book_of_seconds.jpg
+
+ruby:
+  title: Programming Ruby 1.9
+  description:
+    Ruby is the fastest growing and most exciting dynamic
+    language out there.  If you need to get working programs
+    delivered fast, you should add Ruby to your toolbox.
+  price: 49.50
+  image_url: ruby.png

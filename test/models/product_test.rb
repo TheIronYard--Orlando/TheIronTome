@@ -48,7 +48,7 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "product is not valid without a unique title" do
-    product = Product.new(title: products(:morpho).title,
+    product = Product.new(title: products(:ruby).title,
                           description: "Banana between two ferns.",
                           price: 1,
                           image_url: "fred.gif")
@@ -58,8 +58,8 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "product title must be at least 10 characters" do
-    product = products(:morpho)
-    ok = ["What is a man", "Going for the long haul", "The Donkey ate a Neutron Start", "Don't Trust Robust Monkeys"]
+    product = products(:one)
+    ok = ["What is a man", "Going for the long haul", "The Donkey ate a Neutron Star", "Don't Trust Robust Monkeys"]
     ok.each do |title|
       product.title = title
       assert product.valid?, "#{title} should be valid"
