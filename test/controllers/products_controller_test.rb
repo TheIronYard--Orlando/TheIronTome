@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProductsControllerTest < ActionController::TestCase
   setup do
-    @product = products(:one)
+    @product = products(:morpho)
     @update = {
       title: 'Ski School with the Ancient Ones',
       description: 'When a portal to the outer realms tears open above Whistler, hilarity ensues when Yog-Sothoth becomes a ski instructor.',
