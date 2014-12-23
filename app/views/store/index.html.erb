@@ -3,6 +3,9 @@
 <% end %>
 
 <h1>Your Pragmatic Catalog</h1>
+<% if @visit_count > 5 %>
+<p>You've visited the catalog <%= pluralize(@visit_count, 'time') %> since you last added to your cart.</p>
+<% end %>
 
 <% cache ['store', Product.latest] do %>
   <% @products.each do |product| %>

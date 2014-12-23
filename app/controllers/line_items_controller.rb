@@ -26,6 +26,8 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
+    session.delete(:counter) unless session[:counter].nil?
+
     product = Product.find(params[:product_id])
     @line_item = @cart.line_items.build(product: product)
 
