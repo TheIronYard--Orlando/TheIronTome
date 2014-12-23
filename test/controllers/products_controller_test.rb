@@ -33,11 +33,17 @@ class ProductsControllerTest < ActionController::TestCase
   test "should show product" do
     get :show, id: @product
     assert_response :success
+    assert_select "#main p:nth-of-type(2)", /Title.*One Book to Rule/m
+    assert_select "#main p:nth-of-type(3)", /Description.*MyText/m
+    assert_select "#main p:nth-of-type(4)", /Image url.*(jpg|png|gif)/m
   end
 
   test "should get edit" do
     get :edit, id: @product
     assert_response :success
+    assert_select "form input" do |elements|
+      assert_select "[name=?]", /.+/
+    end
   end
 
   test "should update product" do
