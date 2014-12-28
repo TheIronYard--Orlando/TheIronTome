@@ -2,6 +2,7 @@ class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_line_item
 
   # GET /line_items
   # GET /line_items.json
@@ -75,5 +76,10 @@ class LineItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
       params.require(:line_item).permit(:product_id)
+    end
+
+    def invalid_line_item
+      logger.error "Attempt to access invalid product #{params[:id]}"
+      redirect_to store_url, notice: "Invalid line item"
     end
 end
