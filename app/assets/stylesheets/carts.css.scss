@@ -6,6 +6,21 @@
   .item_price, .total_line {
     text-align: right;
   }
+
+  .item_delete {
+    &> a {
+      padding-left: 0.5em;
+      color: white;
+
+      &:visited {
+        color: white;
+      }
+      &:hover {
+        background-color: inherit;
+        color: #bfb;
+      }
+    }
+  }
 }
 
 .total_line .total_cell {
