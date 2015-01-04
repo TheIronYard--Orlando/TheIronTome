@@ -37,6 +37,10 @@ group :development do
   gem 'pry-coolline'
 end
 
+group :development, :test do
+  gem 'dotenv-rails'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
