@@ -58,4 +58,13 @@ class OrdersControllerTest < ActionController::TestCase
 
     assert_redirected_to orders_path
   end
+
+  test "should mail notification if ship_date changed" do
+    patch :update, id: @order, order: { ship_date: DateTime.now }
+    last_mail = ActionMailer::Base.deliveries.last
+
+    assert_equal ["dave@example.org"], last_mail.to
+    assert_equal 'deevo.lopemint@gmail.com', last_mail[:from].value
+    assert_equal "Pragmatic Store Order Shipped", last_mail.subject
+  end
 end
