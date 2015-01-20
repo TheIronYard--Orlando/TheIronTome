@@ -1,3 +1,8 @@
-ErrorNotifier#failed
+Pragmatic Bookshelf Depot Failed
+––––––––––––––––––––––––––––––––
 
-<%= @greeting %>, find me in app/views/error_notifier/failed.text.erb
+<%= @error.message %>
+
+<% @error.backtrace.first(10).each do |trace| %>
+  •<%= trace %>
+<% end %>

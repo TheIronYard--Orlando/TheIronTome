@@ -1,5 +1,10 @@
-<h1>ErrorNotifier#failed</h1>
-
+<h3>Pragmatic Bookshelf Depot Failed</h3>
 <p>
-  <%= @greeting %>, find me in app/views/error_notifier/failed.html.erb
+<%= @error.message %>
 </p>
+
+<ul>
+  <% @error.backtrace.first(10).each do |trace| %>
+    <li><%= trace %></li>
+  <% end %>
+</ul>
