@@ -1,0 +1,10 @@
+<h3>Pragmatic Bookshelf Depot Failed</h3>
+<p>
+<%= @error.message %>
+</p>
+
+<ul>
+  <% @error.backtrace.first(10).each do |trace| %>
+    <li><%= trace %></li>
+  <% end %>
+</ul>

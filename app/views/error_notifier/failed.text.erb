@@ -1,0 +1,8 @@
+Pragmatic Bookshelf Depot Failed
+––––––––––––––––––––––––––––––––
+
+<%= @error.message %>
+
+<% @error.backtrace.first(10).each do |trace| %>
+  •<%= trace %>
+<% end %>
