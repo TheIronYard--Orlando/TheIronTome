@@ -6,9 +6,9 @@ class ErrorNotifier < ActionMailer::Base
   #
   #   en.error_notifier.failed.subject
   #
-  def failed
-    @greeting = "Hi"
+  def failed(error)
+    @error = error
 
-    mail to: "to@example.org"
+    mail to: ENV["ADMIN_EMAIL"]
   end
 end
