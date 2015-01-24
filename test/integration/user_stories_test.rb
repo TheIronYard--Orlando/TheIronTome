@@ -9,17 +9,17 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     LineItem.delete_all
     Order.delete_all
     Cart.delete_all
-    ruby_hook = products(:ruby)
+    ruby_book = products(:ruby)
     # A user goes to the store index page
     get "/"
     assert_response :success
     assert_template "index"
     # They select a product adding it to their cart
-    xml_http_request :post, '/line_items', product_id: ruby_hook.id
+    xml_http_request :post, '/line_items', product_id: ruby_book.id
     assert_response :success
     cart = Cart.find(session[:cart_id])
     assert_equal 1, cart.line_items.size
-    assert_equal ruby_hook, cart.line_items[0].product
+    assert_equal ruby_book, cart.line_items[0].product
     # They then check out...
     get "/orders/new"
     assert_response :success
@@ -47,7 +47,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 
     assert_equal 1, order.line_items.size
     line_item = order.line_items[0]
-    assert_equal ruby_hook, line_item.product
+    assert_equal ruby_book, line_item.product
 
     mail = ActionMailer::Base.deliveries.last
     assert_equal ["dave@example.com"], mail.to
