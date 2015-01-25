@@ -55,11 +55,16 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal "Pragmatic Store Order Confirmation", mail.subject
 
     #product ready to ship
+    #login with admin
     patch "/orders/#{order.id}", order: { ship_date: DateTime.now + 5.days }
     mail = ActionMailer::Base.deliveries.last
     assert_equal ["dave@example.com"], mail.to
     assert_equal 'deevo.lopemint@gmail.com', mail[:from].value
     assert_equal "Pragmatic Store Order Shipped", mail.subject
+
+    #logout admin
+    delete "/logout"
+    assert_nil session[:user_id]
   end
 
 end
