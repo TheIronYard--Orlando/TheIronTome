@@ -54,6 +54,10 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal 'deevo.lopemint@gmail.com', mail[:from].value
     assert_equal "Pragmatic Store Order Confirmation", mail.subject
 
+    #login as administrator
+    post "/login", name: users(:one).name, password: 'secret'
+    assert_equal users(:one).id, session[:user_id]
+
     #product ready to ship
     #login with admin
     patch "/orders/#{order.id}", order: { ship_date: DateTime.now + 5.days }
@@ -66,5 +70,4 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     delete "/logout"
     assert_nil session[:user_id]
   end
-
 end
