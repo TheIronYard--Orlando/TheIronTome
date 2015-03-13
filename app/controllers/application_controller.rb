@@ -11,6 +11,13 @@ class ApplicationController < ActionController::Base
 
   protected
   def authorize
+    return if User.count.zero?
+
+    if User.count && session[:user_id] == "temp"
+      session.delete(:user_id)
+      redirect_to store_url and return
+    end
+
     unless User.find(session[:user_id])
       redirect_to login_url, notice: "Please log in"
     end
