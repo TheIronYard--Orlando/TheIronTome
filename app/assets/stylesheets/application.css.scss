@@ -90,6 +90,10 @@
   fieldset {
     background: #efe;
 
+    div {
+      padding-top: 0.5em;
+    }
+
     legend {
       color: #dfd;
       background: #141;
@@ -100,10 +104,9 @@
 
   form {
     label {
-      width: 5em;
+      width: 8em;
       float: left;
-      text-align: right;
-      padding-top: 0.2em;
+      text-align: left;
       margin-right: 0.1em;
       display: block;
     }
