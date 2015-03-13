@@ -19,6 +19,12 @@
       <%= f.label :name, 'Name:' %><br>
       <%= f.text_field :name, size: 40 %>
     </div>
+    <% if @user.persisted? %>
+      <div class="field">
+        <%= f.label :current_password, 'Current Password:' %><br>
+        <%= f.password_field :current_password, size: 40 %>
+      </div>
+    <% end %>
     <div class="field">
       <%= f.label :password, 'Password:' %><br>
       <%= f.password_field :password, size: 40 %>
