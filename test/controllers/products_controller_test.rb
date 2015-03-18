@@ -38,6 +38,12 @@ class ProductsControllerTest < ActionController::TestCase
     assert_select "#main p:nth-of-type(4)", /Image url.*(jpg|png|gif)/m
   end
 
+  test "should not show product when logged out" do
+    logout
+    get :show, id: @product
+    assert_response :redirect
+  end
+
   test "should get edit" do
     get :edit, id: @product
     assert_response :success
