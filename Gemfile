@@ -34,7 +34,6 @@ group :development do
   gem 'pry-doc'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'pry-coolline'
 end
 
 group :development, :test do
