@@ -19,11 +19,11 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+es:
   layouts:
     application:
-      title: "Pragmatic Bookshelf"
-      home: "Home"
-      questions: "Questions"
-      news: "News"
-      contact: "Contact"
+      title: "Publicaciones de Pragmatica"
+      home: "Inicio"
+      questions: "Preguntas"
+      news: "Noticias"
+      contact: "Contacto"
