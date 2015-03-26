@@ -44,3 +44,13 @@ es:
         seperator: ","
         delimiter: "."
         format: "%n&nbsp;%u"
+  orders:
+    new:
+      legend: "Por favor, introduzca sus datos"
+    form:
+      name: "Nombre"
+      address_html: "Direcci&oacute;n"
+      email: "E-mail"
+      pay_type: "Forma de pago"
+      pay_promt_html: "Seleccione un m&eacute;todo de pago"
+      submit: "Realizar Pedido"
