@@ -31,3 +31,8 @@ es:
     index:
       title_html: "Su Cat&aacute;logo de Pragmatic"
       add_html: "A&ntilde al Carrito"
+  carts:
+    cart:
+      title: "Carrito de la Compra"
+      empty: "Vaciar Carrito"
+      checkout: "Comprar"
