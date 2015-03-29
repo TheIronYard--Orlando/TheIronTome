@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  thanks: "Thank you for your order"
   layouts:
     application:
       title: "Pragmatic Bookshelf"

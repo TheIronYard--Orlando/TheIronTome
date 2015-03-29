@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  thanks: "Gracias por su pedido"
   layouts:
     application:
       title: "Publicaciones de Pragmatica"
