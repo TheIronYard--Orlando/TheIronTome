@@ -1,4 +1,8 @@
 ENV['RAILS_ENV'] ||= 'test'
+ENV["ADMIN_EMAIL"] = "admin@test.org"
+ENV["GMAIL_USERNAME"] = "deevo.lopemint"
+ENV["GMAIL_DOMAIN"] = "gmail.com"
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 

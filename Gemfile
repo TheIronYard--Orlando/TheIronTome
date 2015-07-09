@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'puma'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -27,15 +25,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
-
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-group :development do
-  gem 'spring'
-  gem 'pry'
-  gem 'pry-doc'
-  gem 'pry-byebug'
-  gem 'pry-rails'
-end
 
 group :development, :test do
   gem 'dotenv-rails'

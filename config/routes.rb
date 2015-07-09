@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   get 'admin', to: 'admin#index'
 
   controller :sessions do
-    get    'login', to: :new
-    post   'login', to: :create
-    delete 'logout', to: :destroy
+    get    'login'  => :new
+    post   'login'  => :create
+    delete 'logout' => :destroy
   end
 
   resources :users

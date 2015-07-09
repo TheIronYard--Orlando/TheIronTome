@@ -51,7 +51,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 
     mail = ActionMailer::Base.deliveries.last
     assert_equal ["dave@example.com"], mail.to
-    assert_equal 'deevo.lopemint@gmail.com', mail[:from].value
+    assert_equal "#{ENV["GMAIL_USERNAME"]}@#{ENV["GMAIL_DOMAIN"]}", mail[:from].value
     assert_equal "Pragmatic Store Order Confirmation", mail.subject
 
     #login as administrator
@@ -63,7 +63,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     patch "/orders/#{order.id}", order: { ship_date: DateTime.now + 5.days }
     mail = ActionMailer::Base.deliveries.last
     assert_equal ["dave@example.com"], mail.to
-    assert_equal 'deevo.lopemint@gmail.com', mail[:from].value
+    assert_equal "#{ENV["GMAIL_USERNAME"]}@#{ENV["GMAIL_DOMAIN"]}", mail[:from].value
     assert_equal "Pragmatic Store Order Shipped", mail.subject
 
     #logout admin
