@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
+gem 'ffaker'
 
 group :development, :test do
   gem 'dotenv-rails'
@@ -41,4 +42,3 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
