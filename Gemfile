@@ -29,6 +29,7 @@ gem 'paperclip'
 gem 's3'
 gem 'httparty'
 gem 'cancancan'
+gem 'kaminari', '~> 0.16.1'
 
 group :development, :test do
   gem 'dotenv-rails'
