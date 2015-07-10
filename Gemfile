@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
-gem 'ffaker'
+gem 'ffaker', :git => 'https://github.com/EmmanuelOga/ffaker.git'
 
 group :development, :test do
   gem 'dotenv-rails'

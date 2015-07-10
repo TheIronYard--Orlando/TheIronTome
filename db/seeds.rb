@@ -1,4 +1,3 @@
-require 'ffaker'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -53,11 +52,13 @@ Product.create!(title: 'Rails Test Prescriptions',
   image_url: 'rtp.jpg',
   price: 34.95)
 
+require 'ffaker'
+
 100.times do
   Product.create!(
-    title: FFaker::HipsterIpsum.words(12),
+    title: FFaker::HipsterIpsum.phrase,
     description: FFaker::HipsterIpsum.paragraph,
-    image_url: 'rtp.jpg',
+    image_url: 'http://dummyimage.com/200x200/000/fff.jpg',
     price: "#{rand(1..51)}.#{rand(1..100)}".to_f
   )
 end

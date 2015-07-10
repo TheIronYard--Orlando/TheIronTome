@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/EmmanuelOga/ffaker.git
+  revision: 980ea94f79ad29d8e0ffde97f905fe9873a891ca
+  specs:
+    ffaker (2.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -52,7 +58,6 @@ GEM
       railties (~> 4.0)
     erubis (2.7.0)
     execjs (2.5.2)
-    ffaker (2.1.0)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
     font-awesome-sass (4.3.2.1)
@@ -147,7 +152,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   coffee-rails (~> 4.0.0)
   dotenv-rails
-  ffaker
+  ffaker!
   font-awesome-rails
   font-awesome-sass
   jbuilder (~> 2.0)
