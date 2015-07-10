@@ -9,13 +9,13 @@ class ProductTest < ActiveSupport::TestCase
     assert product.errors[:title].any?
     assert product.errors[:description].any?
     assert product.errors[:price].any?
-    assert product.errors[:image_url].any?
+    assert product.errors[:image_file_name].any?
   end
 
   test "product price must be positive" do
     product = Product.new(title: "Tales of Nyarlathotep",
                           description: "Adorable shenanigans of an ancient one.",
-                          image_url: "nyarlatho-bro.jpg")
+                          image_file_name: "nyarlatho-bro.jpg")
     product.price = -1
     assert product.invalid?
     assert_equal ["must be greater than or equal to 0.01"], product.errors[:price]
@@ -28,11 +28,11 @@ class ProductTest < ActiveSupport::TestCase
     assert product.valid?
   end
 
-  def new_product(image_url)
+  def new_product(image_file_name)
     Product.new(title: "Tales of Nyarlathotep",
                 description: "Adorable shenanigans of an ancient one.",
                 price: 1,
-                image_url: image_url)
+                image_file_name: image_file_name)
   end
 
   test "image url" do
@@ -51,7 +51,7 @@ class ProductTest < ActiveSupport::TestCase
     product = Product.new(title: products(:ruby).title,
                           description: "Banana between two ferns.",
                           price: 1,
-                          image_url: "fred.gif")
+                          image_file_name: "fred.gif")
 
     assert product.invalid?
     assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
