@@ -1,4 +1,4 @@
-<h1>Listing of Orders</h1>
+<h1>List of Orders</h1>
 
 <table>
   <thead>
@@ -17,28 +17,21 @@
     <% @orders.each do |order| %>
       <td><%= order.created_at.strftime("%m/%d/%Y") %></td>
       <td><%= order.total_price %></td>
-  <!-- this total_price is before tax and shipping!  Needs to be updated to include.  CHECK WITH ERIK -->
+  <!-- this total_price is before tax and shing!  Needs to be updated to include.  CHECK WITH ERIK -->
       <td>
         <ul>
           <% order.line_items.each do |item| %>
-          <li> <%= item.product.title %> </a></li>
+          <li> <a href="#"> <%= item.product.title %> </a></li>
           <% end %>
-     <!--  <a href="#"> 
-     <p>Click on each product to rate it</p> -->
+        <p>Click each product to rate it</p> 
         </ul>
       </td>
     <% end %>
   </tbody>    
 
-
-
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <td><%= link_to 'Show Current Order', order %></td>
+        <td><%= link_to 'Edit Order', edit_order_path(order) %></td>
+        <td><%= link_to 'Remove Order', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
 <br>
 
