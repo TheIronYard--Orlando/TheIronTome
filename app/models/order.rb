@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
   belongs_to :pay_type
+  belongs_to :cart
 
   validates :name, :address, :email, :pay_type_id, presence: true
 
