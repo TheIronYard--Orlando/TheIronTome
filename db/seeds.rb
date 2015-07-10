@@ -26,6 +26,7 @@ Product.create!(title: 'CoffeeScript',
 	while writing clearer, cleaner, and safer code.
       </p>},
   image_file_name:   'cs.jpg',
+  inventory_count: 100,
   price: 36.00)
 # . . .
 Product.create!(title: 'Programming Ruby 1.9 & 2.0',
@@ -36,6 +37,7 @@ Product.create!(title: 'Programming Ruby 1.9 & 2.0',
         you should add Ruby to your toolbox.
       </p>},
   image_file_name: 'ruby.jpg',
+  inventory_count: 100,
   price: 49.95)
 # . . .
 
@@ -50,6 +52,7 @@ Product.create!(title: 'Rails Test Prescriptions',
         including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
       </p>},
   image_file_name: 'rtp.jpg',
+  inventory_count: 100,
   price: 34.95)
 
 User.create()
@@ -61,6 +64,7 @@ require 'ffaker'
     title: FFaker::HipsterIpsum.phrase,
     description: FFaker::HipsterIpsum.paragraph,
     image_file_name: 'http://dummyimage.com/200x200/000/fff.jpg',
+    inventory_count: 100,
     price: "#{rand(1..51)}.#{rand(1..100)}".to_f
   )
 end

@@ -5,7 +5,7 @@
 <% end %>
   <td><%= line_item.quantity %></td>
   <td>&times;</td>
-  <td><%= line_item.product.title %></td>
+  <td><%= line_item.products.title %></td>
   <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
   <td class="item_delete"><%= link_to(line_item, method: :delete, remote: true) { icon('minus-circle', '' , class: 'fa-lg') } %> </td>
 </tr>
