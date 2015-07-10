@@ -1,23 +1,37 @@
-<h1>Listing orders</h1>
+<h1>Listing of Orders</h1>
 
 <table>
   <thead>
+  <style> table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;}
+    th, td {padding: 5px;}
+  </style>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Email</th>
-      <th>Pay type</th>
-      <th colspan="3"></th>
-    </tr>
+      <th>Order Date</th>
+      <th>Order Total</th>
+      <th>Items In Order</th>
+    </tr>    
   </thead>
-
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.name %></td>
-        <td><%= order.address %></td>
-        <td><%= order.email %></td>
-        <td><%= order.pay_type %></td>
+      <td><%= order.created_at.strftime("%m/%d/%Y") %></td>
+      <td><%= order.total_price %></td>
+  <!-- this total_price is before tax and shipping!  Needs to be updated to include.  CHECK WITH ERIK -->
+      <td>
+        <ul>
+          <% order.line_items.each do |item| %>
+          <li> <%= item.product.title %> </a></li>
+          <% end %>
+     <!--  <a href="#"> 
+     <p>Click on each product to rate it</p> -->
+        </ul>
+      </td>
+    <% end %>
+  </tbody>    
+
+
+
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
