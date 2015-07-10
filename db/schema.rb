@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125204352) do
+ActiveRecord::Schema.define(version: 20150710151136) do
 
-  create_table "carts", force: true do |t|
+  create_table "carts", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
-  create_table "line_items", force: true do |t|
+  create_table "line_items", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "cart_id"
     t.datetime "created_at"
@@ -32,36 +33,49 @@ ActiveRecord::Schema.define(version: 20150125204352) do
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
 
-  create_table "orders", force: true do |t|
-    t.string   "name"
-    t.text     "address"
-    t.string   "email"
+  create_table "orders", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "pay_type_id"
     t.datetime "ship_date"
+    t.integer  "cart_id"
+    t.float    "sales_tax"
   end
 
   add_index "orders", ["pay_type_id"], name: "index_orders_on_pay_type_id"
 
-  create_table "pay_types", force: true do |t|
+  create_table "pay_types", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "products", force: true do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "image_url"
-    t.decimal  "price",       precision: 8, scale: 2
+    t.decimal  "price",              precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.integer  "pdf_file_size"
+    t.datetime "pdf_updated_at"
+    t.integer  "inventory_count"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zipcode"
+    t.string   "email"
   end
 
 end
