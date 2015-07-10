@@ -9,15 +9,15 @@
 #---
 # Excerpted from "Agile Web Development with Rails",
 # published by The Pragmatic Bookshelf.
-# Copyrights apply to this code. It may not be used to create training material, 
+# Copyrights apply to this code. It may not be used to create training material,
 # courses, books, articles, and the like. Contact us if you are in doubt.
-# We make no guarantees that this code is fit for any purpose. 
+# We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
 # encoding: utf-8
 Product.delete_all
 Product.create!(title: 'CoffeeScript',
-  description: 
+  description:
     %{<p>
         CoffeeScript is JavaScript done right. It provides all of JavaScript's
 	functionality wrapped in a cleaner, more succinct syntax. In the first
@@ -25,7 +25,7 @@ Product.create!(title: 'CoffeeScript',
 	shows you how to hold onto all the power and flexibility of JavaScript
 	while writing clearer, cleaner, and safer code.
       </p>},
-  image_url:   'cs.jpg',    
+  image_url:   'cs.jpg',
   price: 36.00)
 # . . .
 Product.create!(title: 'Programming Ruby 1.9 & 2.0',
@@ -40,7 +40,7 @@ Product.create!(title: 'Programming Ruby 1.9 & 2.0',
 # . . .
 
 Product.create!(title: 'Rails Test Prescriptions',
-  description: 
+  description:
     %{<p>
         <em>Rails Test Prescriptions</em> is a comprehensive guide to testing
         Rails applications, covering Test-Driven Development from both a
@@ -51,3 +51,14 @@ Product.create!(title: 'Rails Test Prescriptions',
       </p>},
   image_url: 'rtp.jpg',
   price: 34.95)
+
+require 'ffaker'
+
+100.times do
+  Product.create!(
+    title: FFaker::HipsterIpsum.phrase,
+    description: FFaker::HipsterIpsum.paragraph,
+    image_url: 'http://dummyimage.com/200x200/000/fff.jpg',
+    price: "#{rand(1..51)}.#{rand(1..100)}".to_f
+  )
+end

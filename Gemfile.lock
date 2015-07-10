@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/EmmanuelOga/ffaker.git
+  revision: 980ea94f79ad29d8e0ffde97f905fe9873a891ca
+  specs:
+    ffaker (2.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -146,6 +152,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   coffee-rails (~> 4.0.0)
   dotenv-rails
+  ffaker!
   font-awesome-rails
   font-awesome-sass
   jbuilder (~> 2.0)
@@ -159,4 +166,4 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
 
 BUNDLED WITH
-   1.10.2
+   1.10.4
