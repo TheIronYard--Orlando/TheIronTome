@@ -21,7 +21,7 @@
       <td>
         <ul>
           <% order.line_items.each do |item| %>
-          <li> <a href="#"> <%= item.product.title %> </a></li>
+          <li> <a class="rate_purchase"> <%= item.product.title %> </a></li>
           <% end %>
         <p>Click each product to rate it</p> 
         </ul>
