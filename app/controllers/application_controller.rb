@@ -27,8 +27,8 @@ class ApplicationController < ActionController::Base
     end
 
     if request.format != Mime::HTML
-      authenticate_or_request_with_http_basic do |username, password|
-        return false unless user = User.find_by_name(username)
+      authenticate_or_request_with_http_basic do |email, password|
+        return false unless user = User.find_by(email: email)
         user.authenticate(password)
       end
     end
