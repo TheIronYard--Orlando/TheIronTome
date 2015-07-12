@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
+  resources :products do
+    get :who_bought, on: :member
+  end
+  
   resources :users
 
   scope '(:locale)' do
@@ -18,9 +22,7 @@ Rails.application.routes.draw do
 
   get 'store/index'
 
-  resources :products do
-    get :who_bought, on: :member
-  end
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
