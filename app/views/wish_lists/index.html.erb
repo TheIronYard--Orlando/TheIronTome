@@ -1,0 +1,32 @@
+<h1>Your Wish List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>description</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wish_lists.each do |wishlist| %>
+      <tr>
+        <td><%= wishlist.product_id %></td>
+        <td><%= wishlist.user_id %></td>
+        
+        <td><%= link_to 'Show', wish_lists_path %></td>
+       <!--  <td><%#= link_to 'Edit', edit_wish_lists_path(wish_list) %></td>
+        <td><%#= link_to 'Destroy', wish_lists, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
+<!-- this should list only the wish list products associated with the user that is logged in at the time.
+i just have the product ids and users ids showing up as a sort of place holder until i figure out how to display the titles, description and prices of all of the products that the user added to the wishlist. -->
