@@ -33,7 +33,7 @@ gem 'kaminari', '~> 0.16.1'
 
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'railroady'
+  gem 'railroady'   
 end
 
 # Use ActiveModel has_secure_password

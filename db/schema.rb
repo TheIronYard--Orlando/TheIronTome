@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150710151136) do
     t.datetime "updated_at"
     t.integer  "quantity",                           default: 1
     t.decimal  "price",      precision: 8, scale: 2
-    t.integer  "order_id"
+    t.integer  "orde(r_id"
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
