@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   before_action :set_i18n_locale_from_params
   rescue_from Exception, with: :handle_exceptions
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:warning] = exception.message
+    redirect_to root_path
+  end
+
   private
   def handle_exceptions(error)
     ErrorNotifier.failed(error).deliver_now

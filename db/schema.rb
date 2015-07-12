@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710151136) do
+ActiveRecord::Schema.define(version: 20150710181710) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20150710151136) do
     t.string   "state"
     t.integer  "zipcode"
     t.string   "email"
+    t.boolean  "admin",           default: false
   end
 
 end
