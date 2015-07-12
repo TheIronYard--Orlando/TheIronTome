@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(name: params[:name])
+    user = User.find_by(email: params[:email])
 
     if User.count.zero?
       session[:user_id] = "temp"
