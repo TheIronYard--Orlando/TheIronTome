@@ -4,22 +4,13 @@ class Product < ActiveRecord::Base
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
-  has_attached_file :image, styles: {thumb: '200X200#'}
-  validates_attachment_content_type :image, content_type: /\Aimage/
-
-
-  validates :title, :description, presence: true #image_url removed
+  validates :title, :description, presence: true #image_file_name removed
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
   validates :title, uniqueness: true, length: { minimum: 10 }
-  # validates :image_url, allow_blank: true, format: {
+  # validates :image_file_name, allow_blank: true, format: {
   #   with: %r{\.(gif|jpg|png)\Z}i,
   #   message: 'must be a URL for GIF, JPG or PNG image.'
   # }
-
-# Paperclip validations available
-# validates :avatar, :attachment_presence => true
-# validates_with AttachmentPresenceValidator, :attributes => :avatar
-# validates_with AttachmentSizeValidator, :attributes => :avatar, :less_than => 1.megabytes
 
   def self.latest
     Product.order(:updated_at).last
