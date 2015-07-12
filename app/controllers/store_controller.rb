@@ -18,5 +18,12 @@ class StoreController < ApplicationController
 
     @visit_count = session[:counter]
     @products = Product.order(:title)
+    @wish_list = WishList.new(wish_list_params)
   end
+   
+   # @wish_list = WishList.new
+
+ def wish_list_params
+     params.permit(:user_id, :product_id)
+   end
 end

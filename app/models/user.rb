@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :orders, through: :carts
   has_many :carts
+  has_many :wish_lists
 
   after_destroy :ensure_an_admin_remains
 

@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @wish_list = WishList.new
   end
 
   # GET /users/1/edit
@@ -25,6 +26,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @wish_list = WishList.new(wish_list_params)
 
     respond_to do |format|
       if @user.save
@@ -79,5 +81,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :password, :password_confirmation)
+    end
+
+    def wish_list_params
+      params.permit(:user_id, :product_id)
     end
 end
