@@ -4,8 +4,11 @@ class ApplicationController < ActionController::Base
   rescue_from Exception, with: :handle_exceptions
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:warning] = exception.message
-    redirect_to root_path
+    redirect_to store_url, notice: exception.message
+  end
+
+  def current_user
+    User.find(session[:user_id])
   end
 
   private
