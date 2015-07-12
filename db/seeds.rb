@@ -52,6 +52,8 @@ Product.create!(title: 'Rails Test Prescriptions',
   image_file_name: 'rtp.jpg',
   price: 34.95)
 
+User.create()
+
 require 'ffaker'
 
 100.times do

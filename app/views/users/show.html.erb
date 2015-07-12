@@ -2,10 +2,28 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+
+<table>
+  <tr>
+    <th>Name:</th>
+    <th>Address 1:</th>
+    <th>Address 2:</th>
+    <th>City:</th>
+    <th>State:</th>
+    <th>Zipcode:</th>
+    <th>Email:</th>
+  </tr>
+  <tr>
+    <td><%= @user.name %></td>
+    <td><%= @user.address_1 %></td>
+    <td><%= @user.address_2 %></td>
+    <td><%= @user.city %></td>
+    <td><%= @user.state %></td>
+    <td><%= @user.zipcode %></td>
+    <td><%= @user.email %></td>
+  </tr>
+</table>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
