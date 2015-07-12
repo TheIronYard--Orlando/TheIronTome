@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710151136) do
+ActiveRecord::Schema.define(version: 20150712214533) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150710151136) do
     t.datetime "updated_at"
     t.integer  "quantity",                           default: 1
     t.decimal  "price",      precision: 8, scale: 2
-    t.integer  "orde(r_id"
+    t.integer  "order_id"
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 20150710151136) do
     t.integer  "pdf_file_size"
     t.datetime "pdf_updated_at"
     t.integer  "inventory_count"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.integer  "stars"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
