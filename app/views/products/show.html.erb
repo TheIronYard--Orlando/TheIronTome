@@ -13,7 +13,9 @@
 <p>
   <%= image_tag @product.image.url(:thumb) %>
 </p>
-
+<p>
+  <%= link_to "Download Product Data PDF", @product.pdf.url(:original, false) %>
+</p>
 <p>
   <strong>Price:</strong>
   <%= @product.price %>
