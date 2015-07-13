@@ -6,7 +6,7 @@ class ProductsControllerTest < ActionController::TestCase
     @update = {
       title: 'Ski School with the Ancient Ones',
       description: 'When a portal to the outer realms tears open above Whistler, hilarity ensues when Yog-Sothoth becomes a ski instructor.',
-      image_url: 'yog-sothoth.jpg',
+      image_file_name: 'yog-sothoth.jpg',
       price: 42.42
     }
   end

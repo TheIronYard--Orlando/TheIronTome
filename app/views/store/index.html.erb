@@ -12,7 +12,7 @@
   <% @products.each do |product| %>
     <% cache ['entry', product] do %>
       <div class="entry">
-        <%= image_tag(product.image_url) %>
+        <%= image_tag product.image.url(:thumb) %>
         <h3><%= product.title %></h3>
         <%= sanitize(product.description) %>
         <div class="price_line">
@@ -23,3 +23,6 @@
     <% end %>
   <% end %>
 <% end %>
+
+<%= paginate @products %>
+<%= page_entries_info @products %>

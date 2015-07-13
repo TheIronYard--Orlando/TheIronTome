@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize, only: [:new, :create]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.order(:name)
+    @users = User.order(:email)
   end
 
   # GET /users/1
@@ -24,11 +25,12 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_url, notice: "User #{@user.name} was successfully created." }
+        session[:user_id] = @user.id
+        format.html { redirect_to users_url, notice: "User #{@user.email} was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -45,7 +47,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.errors.empty? && @user.update(user_params)
-        format.html { redirect_to users_url, notice: "User #{@user.name} was successfully updated." }
+        format.html { redirect_to users_url, notice: "User #{@user.email} was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -59,7 +61,7 @@ class UsersController < ApplicationController
   def destroy
     begin
       @user.destroy
-      flash[:notice] = "User #{@user.name} deleted"
+      flash[:notice] = "User #{@user.email} deleted"
     rescue StandardError => e
       flash[:notice] = e.message
     end
@@ -78,6 +80,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :password, :password_confirmation)
+      params.require(:user).permit(:name, :password, :password_confirmation, :address_1, :address_2, :city, :state, :zipcode, :email)
     end
 end

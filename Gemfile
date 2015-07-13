@@ -22,12 +22,18 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
-
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
+gem 'ffaker', :git => 'https://github.com/EmmanuelOga/ffaker.git'
+gem 'paperclip'
+gem 's3'
+gem 'httparty'
+gem 'cancancan', '~> 1.10'
+gem 'kaminari', '~> 0.16.1'
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'railroady'
 end
 
 # Use ActiveModel has_secure_password
@@ -41,4 +47,3 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
