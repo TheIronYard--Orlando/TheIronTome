@@ -1,8 +1,13 @@
 class Product < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
   has_many :orders, through: :line_items
+<<<<<<< HEAD
+  has_many :ratings, through: :users
+
+=======
   has_attached_file :pdf
   
+>>>>>>> 0f284c6dffe3a1fb8c71bfc913ff1e6666afc3b0
   before_destroy :ensure_not_referenced_by_any_line_item
 
   has_attached_file :image, styles: {thumb: '200X200#'}
