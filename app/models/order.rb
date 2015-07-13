@@ -2,8 +2,11 @@ class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
   belongs_to :pay_type
   belongs_to :cart
+  belongs_to :user
+  delegate :email, :name, :address, to: :user
+  # means you can use order.email 
+  # instead of order.user.email
 
-  # validate :line_items_exist
 
   validates :pay_type_id, presence: true
 
@@ -14,10 +17,5 @@ class Order < ActiveRecord::Base
     end
   end
 
-  # def line_items_exist
-  #     redirect_to store_url if line_items.empty?
-  #     notice: "Add product to cart" 
-  #   end  
-  # end
     
 end
