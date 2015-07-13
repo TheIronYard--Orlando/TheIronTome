@@ -7,15 +7,20 @@ class ApplicationController < ActionController::Base
     redirect_to store_url, notice: exception.message
   end
 
+
   def current_user
-    User.find(session[:user_id])
+    if session[:user_id]
+      @current_user ||= User.find(session[:user_id]) 
+    else
+      @current_user ||= User.new
+    end
   end
 
   private
   def handle_exceptions(error)
-    ErrorNotifier.failed(error).deliver_now
+    #ErrorNotifier.failed(error).deliver_now
     logger.error error.message
-    redirect_to store_url, notice: error.message
+    #redirect_to store_url, notice: error.message
   end
 
   protected

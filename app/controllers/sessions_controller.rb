@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  include Login
   skip_before_action :authorize
 
   def new
@@ -6,12 +7,11 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email])
-
     if User.count.zero?
       session[:user_id] = "temp"
       redirect_to admin_url
     elsif user and user.authenticate(params[:password])
-      session[:user_id] = user.id
+      login(user)
       redirect_to admin_url
     else
       redirect_to login_url, alert: "Invalid user/password combination"
