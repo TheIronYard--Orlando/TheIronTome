@@ -46,8 +46,7 @@ class WishListsController < ApplicationController
     #     format.json { render json: @wish_list.errors, status: :unprocessable_entity }
     #   end
     # end
-  #end
-  
+  #en
   def destroy
     @wish_list = WishList.find(params[:id])
     @wish_list.destroy
