@@ -28,7 +28,7 @@ gem 'ffaker', :git => 'https://github.com/EmmanuelOga/ffaker.git'
 gem 'paperclip'
 gem 's3'
 gem 'httparty'
-gem 'cancancan'
+gem 'cancancan', '~> 1.10'
 gem 'kaminari', '~> 0.16.1'
 
 group :development, :test do

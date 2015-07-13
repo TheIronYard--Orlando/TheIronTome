@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20150712214533) do
     t.string   "state"
     t.integer  "zipcode"
     t.string   "email"
+    t.boolean  "admin",           default: false
   end
 
 end

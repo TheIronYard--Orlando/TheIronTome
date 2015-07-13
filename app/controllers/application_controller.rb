@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
   before_action :set_i18n_locale_from_params
   rescue_from Exception, with: :handle_exceptions
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to store_url, notice: exception.message
+  end
+
+  def current_user
+    User.find(session[:user_id])
+  end
+
   private
   def handle_exceptions(error)
     ErrorNotifier.failed(error).deliver_now
@@ -19,8 +27,8 @@ class ApplicationController < ActionController::Base
     end
 
     if request.format != Mime::HTML
-      authenticate_or_request_with_http_basic do |username, password|
-        return false unless user = User.find_by_name(username)
+      authenticate_or_request_with_http_basic do |email, password|
+        return false unless user = User.find_by(email: email)
         user.authenticate(password)
       end
     end

@@ -16,16 +16,21 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    authorize! :new, @product
   end
 
   # GET /products/1/edit
   def edit
+    @product = Product.find(params[:id])
+    authorize! :edit, @product
   end
 
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(product_params)
+
+    authorize! :create, @product
 
     respond_to do |format|
       if @product.save
@@ -41,6 +46,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    authorize! :update, @product
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -55,6 +61,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    authorize! :destroy, @product
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
@@ -82,7 +89,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :image_file_name, :price)
+      params.require(:product).permit(:title, :description, :image, :price, :pdf)
     end
 
     def invalid_product

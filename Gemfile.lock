@@ -173,7 +173,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
-  cancancan
+  cancancan (~> 1.10)
   coffee-rails (~> 4.0.0)
   dotenv-rails
   ffaker!
