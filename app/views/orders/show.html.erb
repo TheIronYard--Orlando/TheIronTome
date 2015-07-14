@@ -16,9 +16,27 @@
 </p>
 
 <p>
-  <strong>Pay type:</strong>
-  <%= @order.pay_type %>
+  <strong>Order Date:</strong>
+  <%= @order.created_at.strftime("%m/%d/%Y") %>
 </p>
 
+
+<p>
+  <strong>Order Total:</strong>
+  $1,000,000.00 <%= number_to_currency @order.order_total %> 
+</p>
+
+<p>
+  <strong>Items in Order:</strong>
+  	<% @order.line_items.each do |item| %>
+ 			<li> <%= item.product.title %> </li>
+ 			<br> <br>
+ 		<% end %>	
+</p>
+
+
+
+
+<br> <br>
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   def handle_exceptions(error)
     #ErrorNotifier.failed(error).deliver_now
     logger.error error.message
+    raise error
     #redirect_to store_url, notice: error.message
   end
 

@@ -10,13 +10,14 @@
     <tr>
       <th>Order Date</th>      
       <th>Order Total</th>         
-      <th colspan="25">Items In Order</th>
+      <th colspan="<%= @orders.max_by { |order| order.line_items.count }.line_items.count %>" >Items In Order</th>
     </tr>    
   </thead>
   <tbody>
     <% @orders.each do |order| %>
-      <td> <%= order.created_at.strftime("%m/%d/%Y") %> </td>
-      <td> $1,000,000.00 <%= number_to_currency order.order_total %> <td>
+      <td> <%= order.created_at.strftime("%m/%d/%Y") %> <br><br>
+           <%= link_to 'View Order', order_path(order) %> </td>
+      <td> $1,000,000.00 <%= number_to_currency order.order_total %> </td>
   <% #TODO: remove "one million dollars" (with a Dr. Evil laugh) %>
       <% order.line_items.each do |item| %>
         <td>
