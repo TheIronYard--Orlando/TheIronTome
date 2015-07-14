@@ -20,7 +20,7 @@ class WishListsController < ApplicationController
   end
 
   def new
-  	@user = User.find(params[:user_id])
+  	#@user = User.find(params[:user_id])
   	@wish_list = WishList.new
 
     flash.now[:notice] = "This item has been added to your wish list"
@@ -28,9 +28,9 @@ class WishListsController < ApplicationController
   end
 
   def create
-    @wish_list = WishList.new(wish_list_params)
+    @wish_list = current_user.wish_lists.build(product_id: params[:product_id])
       
-      if @wish_list.save
+    if @wish_list.save
       flash.now[:notice] = "This item has been added to the list"
       #redirect_to root_url
     else
@@ -56,8 +56,8 @@ class WishListsController < ApplicationController
 
   private
 
-  def wish_list_params
-    #params.permit(:user_id, :product_id)
-    params.require(:wishlist).permit(:user_id, :product_id)
-  end
+    # def wish_list_params
+    # #params.permit(:user_id, :product_id)
+    #   params.require(:wishlist).permit(:user_id, :product_id)
+    # end
 end
