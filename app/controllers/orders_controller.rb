@@ -53,6 +53,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+    authorize! :update, @order
     @order.assign_attributes(order_params)
     OrderNotifier.shipped(@order.id).deliver_later if @order.ship_date_changed?
     respond_to do |format|
@@ -69,6 +70,7 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
+    authorize! :destroy, @order
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
