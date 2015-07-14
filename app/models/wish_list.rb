@@ -1,6 +1,6 @@
 class WishList < ActiveRecord::Base
   belongs_to :user
-  has_many :products	
+  belongs_to :product
 end
 
  def add_product_to_wish_list(product_id)

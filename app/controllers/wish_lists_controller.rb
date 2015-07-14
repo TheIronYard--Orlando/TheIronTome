@@ -1,14 +1,16 @@
 class WishListsController < ApplicationController
   
   def index
-    @wish_lists = WishList.all
+    @wish_lists = current_user.wish_lists
+
   end
 
   def show
-    @wish_list = WishList.where("wish_lists.user_id = ?", user.id)
+    @wish_list = WishList.find(params[:id])
+    # where("wish_lists.user_id = ?", user.id)
   end
-  # show page should only show the products(title,description and price) via product_id,
-  # associated with a particular user_id. user_id should be the current user.
+  # show page should only show the product(title,description and price) via product_id,
+  # associated with the current user. 
   #   @wish_list = current_user.
   def edit
   	@wish_list = WishList.find(params[:id])

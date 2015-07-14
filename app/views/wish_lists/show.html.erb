@@ -1,9 +1,21 @@
-<h1>WishLists#show</h1>
-<p>Find me in app/views/wish_lists/show.html.erb</p>
+<h1><%= @wish_list.product.title %></h1>
 
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>description</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
 <tr>
-  
-  <td><%= wish_list.product.title %></td>
-  <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
-  <td class="item_delete"><%= link_to(wish_list, method: :delete, remote: true) { icon('minus-circle', '' , class: 'fa-lg') } %> </td>
+  <td><%= @wish_list.product.title %></td>
+  <td><%= @wish_list.product.description%></td>
+  <td><%= @wish_list.product.price %></td>
+  <!-- <td class="item_price"><%#= number_to_currency(line_item.total_price) %></td>
+  <td class="item_delete"><%#= link_to(wish_list, method: :delete, remote: true) { icon('minus-circle', '' , class: 'fa-lg') } %> </td> -->
 </tr>
+</tbody>
