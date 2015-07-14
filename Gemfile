@@ -28,8 +28,9 @@ gem 'ffaker', :git => 'https://github.com/EmmanuelOga/ffaker.git'
 gem 'paperclip'
 gem 's3'
 gem 'httparty'
-gem 'cancancan'
-gem 'kaminari'
+gem 'cancancan', '~> 1.10'
+gem 'kaminari', '~> 0.16.1'
+gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 
 group :development, :test do
   gem 'dotenv-rails'
@@ -47,3 +48,4 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'quiet_assets', group: :development

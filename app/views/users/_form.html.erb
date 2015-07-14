@@ -19,6 +19,30 @@
       <%= f.label :name, 'Name:' %><br>
       <%= f.text_field :name, size: 40 %>
     </div>
+    <div class="field">
+      <%= f.label :address_1, 'Address 1:' %><br>
+      <%= f.text_field :address_1, size: 40 %>
+    </div>
+    <div class="field">
+      <%= f.label :address_2, 'Address 2:' %><br>
+      <%= f.text_field :address_2, size: 40 %>
+    </div>
+    <div class="field">
+      <%= f.label :city, 'City:' %><br>
+      <%= f.text_field :city, size: 40 %>
+    </div>
+    <div class="field">
+      <%= f.label :state, 'State:' %><br>
+      <%= f.text_field :state, size: 40 %>
+    </div>
+    <div class="field">
+      <%= f.label :zipcode, 'Zipcode:' %><br>
+      <%= f.text_field :zipcode, size: 40 %>
+    </div>
+    <div class="field">
+      <%= f.label :email, 'Email:' %><br>
+      <%= f.text_field :email, size: 40 %>
+    </div>
     <% if @user.persisted? %>
       <div class="field">
         <%= f.label :current_password, 'Current Password:' %><br>

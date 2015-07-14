@@ -9,8 +9,16 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
+  resources :products do
+    get :who_bought, on: :member
+  end
+  
   resources :users
 
+  resources :products do
+    get :who_bought, on: :member
+  end
+  
   scope '(:locale)' do
     resources :orders
     resources :line_items
@@ -21,6 +29,7 @@ Rails.application.routes.draw do
   end
 
   get 'store/index'
+
 
   resources :products do
     get :who_bought, on: :member
@@ -81,6 +90,7 @@ Rails.application.routes.draw do
 #                    PATCH  /products/:id(.:format)                  products#update
 #                    PUT    /products/:id(.:format)                  products#update
 #                    DELETE /products/:id(.:format)                  products#destroy
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

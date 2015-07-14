@@ -7,7 +7,7 @@ class StoreController < ApplicationController
     if params[:set_locale]
       redirect_to store_url(locale: params[:set_locale])
     else
-      @products = Product.order(:title)
+      @products = Product.order(:title).page(params[:page]).per(10)
     end
 
     if session[:counter].nil?
@@ -17,8 +17,10 @@ class StoreController < ApplicationController
     end
 
     @visit_count = session[:counter]
-    @products = Product.order(:title)
-    @wish_list = WishList.new(wish_list_params)
+
+    @products = Product.order(:title).page(params[:page]).per(10)
+    @wish_lists = WishList.new(wish_list_params)
+
   end
    
    # @wish_list = WishList.new

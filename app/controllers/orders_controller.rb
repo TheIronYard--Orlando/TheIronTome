@@ -32,7 +32,8 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = current_user.orders.new(order_params)
+    authorize! :create, @order
     @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
@@ -48,6 +49,15 @@ class OrdersController < ApplicationController
       end
     end
   end
+
+  def order_sub_total
+    #cart.total_price
+  end
+
+  def order_total
+
+  end
+
 
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
