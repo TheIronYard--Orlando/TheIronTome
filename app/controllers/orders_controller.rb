@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
   end
 
   def order_sub_total
-    number_to_currency cart.total_price
+    #cart.total_price
   end
 
   def order_total
