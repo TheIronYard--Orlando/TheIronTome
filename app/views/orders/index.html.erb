@@ -19,7 +19,9 @@
       <td> $1,000,000.00 <%= number_to_currency order.order_total %> <td>
   <% #TODO: remove "one million dollars" (with a Dr. Evil laugh) %>
       <% order.line_items.each do |item| %>
-        <td><li><strong> <%= item.product.title %> </strong></li></td>
+        <td>
+          <li><strong> <%= item.product.title %> </strong></li>
+        </td>
       <% end %>       
   </tbody>    
     <% end %>
