@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :orders#, through: :carts
   has_one :cart
 
-  after_destroy :ensure_an_admin_remains
+  before_destroy :ensure_an_admin_remains
 
   def address
     "#{address_1} #{address_2} #{city}, #{state} #{zipcode}"
@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   private
   def ensure_an_admin_remains
-    if User.count.zero?
+    if User.count == 1
       raise "Can't delete last user"
     end
   end

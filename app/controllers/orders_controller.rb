@@ -32,15 +32,12 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = current_user.orders.new(order_params)
+    @order = current_user.orders.new(order_params.merge(cart: @cart))
     authorize! :create, @order
-    @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
       if @order.save
-        Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        OrderNotifier.received(@order.id).deliver_later
         format.html { redirect_to store_url, notice: I18n.t('.thanks') }
         format.json { render :show, status: :created, location: @order }
       else

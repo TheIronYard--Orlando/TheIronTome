@@ -7,10 +7,8 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
-  resources :products do
-    get :who_bought, on: :member
-  end
-  
+  # /products/201/who_bought.json
+  # /products/201/who_bought.xml
   resources :users
 
   resources :products do
