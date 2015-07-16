@@ -1,0 +1,31 @@
+<h1>My Purchases</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Price</th>
+      <th>Items</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @purchases.each do |purchase| %>
+      <tr>
+        <td rowspan="<%= purchase.line_items.length%>">
+          <%= purchase.created_at.strftime "%b %Y" %>
+        </td>
+        <td rowspan="<%= purchase.line_items.length%>">
+          <%= number_to_currency purchase.price %>
+        </td>
+        <td>
+          <%= link_to purchase.first_item.title, purchase.first_item.product %>
+        </td>
+      </tr>
+      <% purchase.additional_items.each do |item| %>
+        <tr>
+          <td>
+            <%= link_to item.title, item.product %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>

@@ -1,7 +1,8 @@
 class Cart < ActiveRecord::Base
-  has_many :line_items, dependent: :destroy
+  has_many :line_items#, dependent: :destroy
   belongs_to :user
   has_many :orders
+  after_destroy :delete_orphaned_line_items
 
   def add_product(product_id, product_price, qty = 1)
     current_item = line_items.find_by(product_id: product_id)
@@ -26,4 +27,10 @@ class Cart < ActiveRecord::Base
     end
     save
   end
+
+  private
+
+    def delete_orphaned_line_items
+      line_items.each{|line_item| line_item.destroy if line_item.order_id.nil? }
+    end
 end
