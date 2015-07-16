@@ -70,14 +70,6 @@ ActiveRecord::Schema.define(version: 20150713204634) do
     t.integer  "inventory_count"
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "user_id"
-    t.integer  "stars"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
