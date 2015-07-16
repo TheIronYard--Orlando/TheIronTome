@@ -57,10 +57,10 @@ User.create()
 require 'ffaker'
 
 100.times do
-  Product.create!(
-    title: FFaker::HipsterIpsum.phrase,
+  Product.create(
+    title: FFaker::Movie.title,
     description: FFaker::HipsterIpsum.paragraph,
-    image_file_name: 'http://dummyimage.com/200x200/000/fff.jpg',
-    price: "#{rand(1..51)}.#{rand(1..100)}".to_f
+    image_file_name: 'http://lorempixel.com/200/200/cats',
+    price: "#{rand(1..50)}.#{'%02i' % rand(0..99)}".to_f
   )
 end
