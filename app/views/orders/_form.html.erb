@@ -10,24 +10,26 @@
       </ul>
     </div>
   <% end %>
-<% if false %>
-  <div class="field">
-    <%= f.label :name, t('.name') %><br>
-    <%= f.text_field :name, size: 40 %>
-  </div>
-  <div class="field">
-    <%= f.label :address, t('.address_html') %><br>
-    <%= f.text_area :address, rows: 3, cols: 40 %>
-  </div>
-  <div class="field">
-    <%= f.label :email, t('.email') %><br>
-    <%= f.text_field :email, size: 40 %>
-  </div>
-<% end %>
-  <div class="field">
-    <%= f.label :pay_type, t('.pay_type') %><br>
-    <%= f.collection_select :pay_type_id, PayType.all, :id, :name, prompt: t('.pay_prompt_html') %>
-  </div>
+
+  <%= f.fields_for :credit_card, CreditCard.new do |c| %>
+    <div class="field">
+      <%= c.label :number %><br/>
+      <%= c.text_field :number %>
+    </div>
+    <div class="field">
+      <%= c.label :cvv, 'Verification' %><br/>
+      <%= c.text_field :cvv %>
+    </div>
+    <div class="field">
+      <%= c.label :expiration_month %><br/>
+      <%= c.select :expiration_month, (1..12) %>
+    </div>
+    <div class="field">
+      <%= c.label :expiration_year %><br/>
+      <%= c.select :expiration_year, (2015..2020) %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit t('.submit') %>
   </div>

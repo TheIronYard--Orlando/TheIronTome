@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_action :authorize, only: [:new, :create]
+  
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
       return
     end
 
-    @order = Order.new
+    @order = current_user.orders.build
   end
 
   # GET /orders/1/edit
@@ -81,6 +81,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type_id, :ship_date)
+      params.require(:order).permit(:ship_date, :credit_card => [ :number, :cvv, :expiration_year, :expiration_month ])
     end
 end

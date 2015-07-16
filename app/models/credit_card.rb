@@ -4,11 +4,12 @@ class CreditCard
   # but it doesn't talk to any financial systems to find out whether it *is* valid.
   
   include ActiveModel::Validations
+  validates :number, presence: true
   validate :number_fits_luhn
   validate :has_not_expired
   attr_accessor :number, :cvv
 
-  def initialize(attributes)
+  def initialize(attributes = {})
     @number = attributes[:number]
     @cvv = attributes[:cvv]
     @expiration_month = attributes[:expiration_month]
@@ -27,13 +28,13 @@ class CreditCard
 
     def number_fits_luhn
       unless Luhn.valid? number
-        errors.add :number, 'is not a valid number'
+        errors.add :number, 'credit card number is not valid'
       end
     end
 
     def has_not_expired
       if expired?
-        errors.add :base, 'has expired'
+        errors.add :base, 'credit card has expired'
       end
     end
 

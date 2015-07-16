@@ -16,6 +16,14 @@ class Order < ActiveRecord::Base
     @credit_card = CreditCard.new(hash)
   end
 
+  def first_item
+    line_items.first
+  end
+
+  def additional_items
+    line_items[1..-1]
+  end
+  
   private
 
     def add_line_items_from_cart
@@ -23,11 +31,14 @@ class Order < ActiveRecord::Base
         item.cart_id = nil
         line_items << item
       end
+      self.price = cart.total_price
     end
 
     def credit_card_is_valid
       unless credit_card.valid?
-        errors.add :base, 'credit card is invalid'
+        credit_card.errors.each do |attribute, msg|
+          errors.add :base, msg
+        end
       end
     end
 
