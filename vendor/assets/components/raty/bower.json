@@ -1,0 +1,19 @@
+{
+  "authors"      : ["Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"],
+  "description"  : "jQuery Raty - A Star Rating Plugin",
+
+  "dependencies" : {
+    "jquery": "2"
+  },
+
+  "homepage"     : "https://github.com/wbotelhos/raty",
+  "ignore"       : ["**/.*", "node_modules", "spec", "vendor"],
+  "keywords"     : ["classificacao", "classificar", "javascript", "jquery", "library", "plugin", "rating", "raty", "star", "staring", "votar", "voto"],
+  "license"      : "MIT",
+  "main"         : ["lib/jquery.raty.js", "lib/jquery.raty.css" ],
+  "name"         : "raty",
+  "version"      : "2.7.0" 
+  // copied from https://github.com/wbotelhos/raty/issues/173
+  // this replaces the .bower.json file which was installed by
+  // bower install raty --save
+}

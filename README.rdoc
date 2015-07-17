@@ -1,28 +1,23 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I installed the jquery.raty library using Bower(http://bower.io/), which is a package management
+system for HTML/CSS/JS similar to how Bundler works for Ruby gems.
 
-Things you may want to cover:
+Bower requires Node.js(https://nodejs.org/) simply for *its* package management
+system, npm(https://www.npmjs.com/) (the node package manager). 
 
-* Ruby version
+Of course, one wants to keep track of which *version* of Node is being used,
+which requires nvm(https://www.npmjs.com/package/nvm) (the node version manager).
 
-* System dependencies
+nvm can be installed with Homebrew.
 
-* Configuration
+Herewith, the steps involved in using all of these things:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* brew update
+* brew install nvm
+* source $(brew --prefix nvm)/nvm.sh
+* echo "source $(brew --prefix nvm)/nvm.sh" >> ~/.zshrc
+* NOTE: replace .zshrc in the above with .bashrc if you're still using bash
+* nvm install 0.10
+* npm install -g bower
+* bower install raty --save
