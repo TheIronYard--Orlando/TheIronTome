@@ -21,6 +21,14 @@ class Product < ActiveRecord::Base
 # validates :avatar, :attachment_presence => true
 # validates_with AttachmentPresenceValidator, :attributes => :avatar
 # validates_with AttachmentSizeValidator, :attributes => :avatar, :less_than => 1.megabytes
+  scope :with_ratings, -> { joins('LEFT JOIN line_items ON products.id = line_items.product_id LEFT JOIN ratings ON line_items.id = ratings.line_item_id')
+      .group('products.id') }
+
+  scope :ordered_by_ratings, -> { with_ratings.order('AVG(ratings.stars) DESC') }
+  # from http://stackoverflow.com/questions/29380941/ordering-data-from-table-by-average-rating-and-number-of-reviews-including-objec
+
+  scope :ordered_by_n_ratings, -> { select("products.*, COUNT(ratings.id) ratings_count")
+                                    .with_ratings.order('ratings_count DESC')}
 
   def self.latest
     Product.order(:updated_at).last

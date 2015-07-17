@@ -8,6 +8,16 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def by_avg_rating
+    @products = Product.ordered_by_ratings.page(params[:page]).per(10)
+    render :index
+  end
+
+  def by_n_ratings
+    @products = Product.ordered_by_n_ratings.page(params[:page]).per(10)
+    render :index
+  end
+
   # GET /products/1
   # GET /products/1.json
   def show

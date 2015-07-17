@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :users
 
   resources :products do
+    collection do
+      get :by_avg_rating
+      get :by_n_ratings
+    end
     get :who_bought, on: :member
   end
   
