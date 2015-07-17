@@ -50,6 +50,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def order_sub_total
+    #cart.total_price
+  end
+
+  def order_total
+
+  end
+
+
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update

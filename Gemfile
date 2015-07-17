@@ -30,6 +30,7 @@ gem 's3'
 gem 'httparty'
 gem 'cancancan', '~> 1.10'
 gem 'kaminari', '~> 0.16.1'
+gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 
 group :development, :test do
   gem 'dotenv-rails'

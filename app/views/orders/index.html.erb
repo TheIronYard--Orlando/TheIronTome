@@ -1,18 +1,21 @@
-<h1>Listing orders</h1>
+<h1>List of Orders</h1>
 
 <table>
   <thead>
+  <style> table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;}
+    th, td {padding: 5px;}
+  </style>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Email</th>
-      <th>Pay type</th>
-      <th colspan="3"></th>
-    </tr>
+      <th>Order Date</th>      
+      <th>Order Total</th>         
+      <th colspan="<%= @orders.max_by { |order| order.line_items.count }.line_items.count %>" >Items In Order</th>
+    </tr>    
   </thead>
-
   <tbody>
     <% @orders.each do |order| %>
+<<<<<<< HEAD
       <tr>
         <td><%= order.name %></td>
         <td><%= order.address %></td>
@@ -26,10 +29,20 @@
           <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
+=======
+      <td> <%= order.created_at.strftime("%m/%d/%Y") %> <br><br>
+           <%= link_to 'View Order', order_path(order) %> </td>
+      <td> $1,000,000.00 <%= number_to_currency order.order_total %> </td>
+  <% #TODO: remove "one million dollars" (with a Dr. Evil laugh) %>
+      <% order.line_items.each do |item| %>
+        <td>
+          <li><strong> <%= item.product.title %> </strong></li>
+        </td>
+      <% end %>       
+  </tbody>    
+>>>>>>> master
     <% end %>
-  </tbody>
-</table>
-
-<br>
+</table> 
 
 <%= link_to 'New Order', new_order_path %>
+
