@@ -1,0 +1,22 @@
+<h1>Your Purchase</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Your Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @purchase.line_items.each do |item| %>
+      <tr>
+        <td><%= item.title %></td>
+        <td><%= item.description %></td>
+        <%= content_tag :td, id: dom_id(item) do %>
+          <%= render partial: 'ratings/form', locals: { item: item } %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

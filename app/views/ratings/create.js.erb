@@ -1,0 +1,2 @@
+$("#<%= dom_id(@item) %>").html("<%= j(render partial: 'form', locals: { item: @item }) %>")
+Helpers.applyRaty("#<%= dom_id(@item) %> .raty")

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   has_secure_password
   has_many :orders#, through: :carts
+  has_many :line_items, through: :orders
   has_one :cart
 
   before_destroy :ensure_an_admin_remains

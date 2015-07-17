@@ -1,4 +1,4 @@
-<h1>My Purchases</h1>
+j<h1>My Purchases</h1>
 
 <table>
   <thead>
@@ -6,6 +6,7 @@
       <th>Date</th>
       <th>Price</th>
       <th>Items</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,7 @@
         <td>
           <%= link_to purchase.first_item.title, purchase.first_item.product %>
         </td>
+        <td><%= link_to 'Rate this purchase', purchase_path(purchase.id) %></td>
       </tr>
       <% purchase.additional_items.each do |item| %>
         <tr>

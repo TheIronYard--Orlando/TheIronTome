@@ -15,11 +15,13 @@ Rails.application.routes.draw do
     get :who_bought, on: :member
   end
   
-  resources :purchases
+  resources :purchases, only: [ :index, :show ]
   
   scope '(:locale)' do
     resources :orders
-    resources :line_items
+    resources :line_items do
+      resource :rating, only: [ :create, :update ] # note the singular, bc a line_item has_one rating
+    end
     resources :carts
     root 'store#index', as: 'store'
   end

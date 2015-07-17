@@ -39,10 +39,13 @@ class ApplicationController < ActionController::Base
       end
     end
 
-
-    unless User.find(session[:user_id])
+    unless logged_in_user?
       redirect_to login_url, notice: "Please log in"
     end
+  end
+
+  def logged_in_user?
+    current_user.persisted?
   end
 
   def set_i18n_locale_from_params
