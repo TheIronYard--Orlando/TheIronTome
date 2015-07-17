@@ -43,6 +43,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    authorize! :update, @user
     current_password = params[:user].delete(:current_password)
     @user.errors.add(:current_password, 'is incorrect.') unless @user.authenticate(current_password)
 
@@ -60,6 +61,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    authorize! :destroy, @user
     begin
       @user.destroy
       flash[:notice] = "User #{@user.email} deleted"

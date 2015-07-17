@@ -16,8 +16,12 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :edit, User %>
+          <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <% end %>
+        <% if can? :destroy, User %>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

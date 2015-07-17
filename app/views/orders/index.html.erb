@@ -15,6 +15,21 @@
   </thead>
   <tbody>
     <% @orders.each do |order| %>
+<<<<<<< HEAD
+      <tr>
+        <td><%= order.name %></td>
+        <td><%= order.address %></td>
+        <td><%= order.email %></td>
+        <td><%= order.pay_type %></td>
+        <td><%= link_to 'Show', order %></td>
+        <% if can? :edit, Order %>
+          <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <% end %>
+        <% if can? :destroy, Order %>
+          <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+=======
       <td> <%= order.created_at.strftime("%m/%d/%Y") %> <br><br>
            <%= link_to 'View Order', order_path(order) %> </td>
       <td> $1,000,000.00 <%= number_to_currency order.order_total %> </td>
@@ -25,6 +40,7 @@
         </td>
       <% end %>       
   </tbody>    
+>>>>>>> master
     <% end %>
 </table> 
 
