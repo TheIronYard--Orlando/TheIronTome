@@ -25,6 +25,9 @@
   </tr>
 <% end %>
 </table>
+
+<%= paginate @products %>
+<%= page_entries_info @products %>
 <br />
 <% if can? :create, Product %>
   <%= link_to 'New product', new_product_path %>

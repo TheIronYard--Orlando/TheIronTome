@@ -3,7 +3,8 @@
 <% end %>
 
 <h1><%= t('.title_html') %></h1>
-
+<p>Sort by: <%= link_to 'average rating', by_avg_rating_products_path %> |
+            <%= link_to 'number of ratings', by_n_ratings_products_path %></p>
 <% if @visit_count > 5 %>
 <p>You've visited the catalog <%= pluralize(@visit_count, 'time') %> since you last added to your cart.</p>
 <% end %>

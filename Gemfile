@@ -31,6 +31,7 @@ gem 'httparty'
 gem 'cancancan', '~> 1.10'
 gem 'kaminari', '~> 0.16.1'
 gem 'luhn' #for credit card
+gem 'easypost'
 group :development, :test do
   gem 'dotenv-rails'
   gem 'railroady'
