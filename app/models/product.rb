@@ -34,6 +34,11 @@ class Product < ActiveRecord::Base
     Product.order(:updated_at).last
   end
 
+  def translate_title_and_description(language)
+    self.title = Yandex::API::Translate.do(title, language)['text'][0]
+    self.description = Yandex::API::Translate.do(description, language)['text'][0]
+  end
+  
   private
 
   #ensure that there are no line items referencing this product

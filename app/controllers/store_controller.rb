@@ -15,8 +15,11 @@ class StoreController < ApplicationController
     else
       session[:counter] += 1
     end
-
+    
     @visit_count = session[:counter]
     @products = Product.order(:title).page(params[:page]).per(10)
+    if I18n.locale && I18n.locale != 'en'
+      @products.each{|product| product.translate_title_and_description(I18n.locale) }
+    end
   end
 end
