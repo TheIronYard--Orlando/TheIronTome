@@ -10,6 +10,10 @@ class LineItem < ActiveRecord::Base
     subtotal + shipping_price + tax
   end
 
+  def update_product_inventory
+    product.update_inventory(quantity)
+  end
+  
   private
 
     def subtotal

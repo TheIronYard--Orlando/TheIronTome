@@ -38,7 +38,11 @@ class Product < ActiveRecord::Base
     self.title = Yandex::API::Translate.do(title, language)['text'][0]
     self.description = Yandex::API::Translate.do(description, language)['text'][0]
   end
-  
+
+  def update_quantity(quantity)
+    decrement! :inventory, quantity
+  end
+
   private
 
   #ensure that there are no line items referencing this product

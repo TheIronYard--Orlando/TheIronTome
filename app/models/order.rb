@@ -5,8 +5,9 @@ class Order < ActiveRecord::Base
   belongs_to :user
   delegate :email, :name, :address, to: :user
   before_save :add_line_items_from_cart
-  after_save :destroy_cart
-  after_save :send_notification_email
+  after_create :destroy_cart
+  after_create :send_notification_email
+  after_create :update_product_inventory
   # means you can use order.email 
   # instead of order.user.email
   attr_reader :credit_card
@@ -50,4 +51,7 @@ class Order < ActiveRecord::Base
       OrderNotifier.received(id).deliver_later
     end
 
+    def update_product_inventory
+      line_items.each{|line_item| line_item.update_product_inventory }
+    end
 end
