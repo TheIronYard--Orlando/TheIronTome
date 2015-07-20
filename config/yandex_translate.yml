@@ -1,4 +1,4 @@
 development:
-    token: "trnsl.1.1.20150709T212757Z.56076117dbe8ddfe.8a85cbac6cdf97b651c6f1a7b79db2c01243cded"
+    token: ENV['YANDEX']
     ui: "ru"
     verbose: true
