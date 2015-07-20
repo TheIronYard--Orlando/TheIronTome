@@ -7,47 +7,65 @@ class LineItem < ActiveRecord::Base
   delegate :title, :description, to: :product
 
   def total_price
-    product.price * quantity + shipping_price
+    subtotal + shipping_price + tax
   end
 
-  def shipping_carrier
-    shipment.lowest_rate.carrier
-  end
-  
-  def shipping_price
-    shipment.lowest_rate.rate
-  end
+  private
 
-  def from_address
-    FROM_ADDRESS #constant set in initializer
-  end
+    def subtotal
+      product.price * quantity
+    end
 
-  def parcel
-    EasyPost::Parcel.create(
-      width: product.width,
-      length: product.length, 
-      height: product.height * quantity,
-      weight: product.weight * quantity
-    )
-  end
+    def shipping_carrier
+      shipment.lowest_rate.carrier
+    end
+    
+    def shipping_price
+      if user.nil?
+        0 #can't have a shipping price if no user=>no address
+      else
+        shipment.lowest_rate.rate
+      end
+    end
 
-  def shipment
-    EasyPost::Shipment.create(
-      to_address: to_address,
-      from_address: from_address,
-      parcel: parcel
-    )
-  end
+    def from_address
+      FROM_ADDRESS #constant set in initializer
+    end
 
-  def to_address
-    EasyPost::Address.create(
-      name: user.name,
-      street1: user.address_1,
-      city: user.city,
-      state: user.state,
-      zip: user.zip,
-      country: 'US'
-    )
-  end
+    def parcel
+      EasyPost::Parcel.create(
+        width: product.width,
+        length: product.length, 
+        height: product.height * quantity,
+        weight: product.weight * quantity
+      )
+    end
+
+    def shipment
+      EasyPost::Shipment.create(
+        to_address: to_address,
+        from_address: from_address,
+        parcel: parcel
+      )
+    end
+
+    def to_address
+      EasyPost::Address.create(
+        name: user.name,
+        street1: user.address_1,
+        city: user.city,
+        state: user.state,
+        zip: user.zip,
+        country: 'US'
+      )
+    end
+
+    def tax
+      if user && user.address.state == 'FL'
+        0.06 * subtotal # note this is only state-level
+      else
+        0
+      end
+    end
 
 end
